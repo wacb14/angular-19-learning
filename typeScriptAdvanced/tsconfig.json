@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", // Where the code will be transpiled to
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false, // Metadata for decorators removed for better performance
+    "useDefineForClassFields": true
+  }
+}
