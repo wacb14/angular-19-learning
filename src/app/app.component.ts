@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { IfComponent } from './if/if.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [IfComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

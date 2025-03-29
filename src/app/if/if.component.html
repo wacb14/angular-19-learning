@@ -1,0 +1,9 @@
+<div *ngIf="isVisible; else elseBlock">Look at here!!</div>
+<ng-template #elseBlock>Hidden content</ng-template>
+<button (click)="changeStatus()">Change status</button>
+
+@if ( isVisible ) {
+<div>New way to make an if block</div>
+} @else {
+<div>New way to make an else block</div>
+There's no need to use ng-template anymore. }
