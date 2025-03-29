@@ -1,0 +1,27 @@
+<article>
+  <h1>For block</h1>
+  <section [style]="{ backgroundColor: '#1231a1', color: 'white' }">
+    <ng-container *ngFor="let person of people; let i = index">
+      <span class="card">
+        <h3>{{ person.name }}</h3>
+        <h4>{{ person.age }}</h4>
+      </span>
+    </ng-container>
+  </section>
+
+  <section [style]="{ backgroundColor: '#00ED00' }">
+    <div>Now we can use two structural directives at the same time.</div>
+    @for(person of people; track person.id; let i =$index, e=$even, o=$odd,
+    f=$first, l=$last) {
+    <span class="card">
+      @if(e){
+      <small>Even</small>
+      } @if(o){
+      <small>Odd</small>
+      }
+      <h3>{{ person.name }}</h3>
+      <h4>{{ person.age }}</h4>
+    </span>
+    }
+  </section>
+</article>
