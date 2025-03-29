@@ -10,7 +10,10 @@
   </section>
 
   <section [style]="{ backgroundColor: '#00ED00' }">
-    <div>Now we can use two structural directives at the same time.</div>
+    <h3>
+      Now we can use two structural directives at the same time. But now it's
+      mandatory to use track property to use for block.
+    </h3>
     @for(person of people; track person.id; let i =$index, e=$even, o=$odd,
     f=$first, l=$last) {
     <span class="card">
@@ -22,6 +25,8 @@
       <h3>{{ person.name }}</h3>
       <h4>{{ person.age }}</h4>
     </span>
+    } @empty {
+    <h3>There is no data</h3>
     }
   </section>
 </article>
