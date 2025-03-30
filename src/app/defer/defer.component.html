@@ -1,0 +1,13 @@
+<section>
+  @defer (when isVisible) {
+  <div>
+    <img
+      src="https://wallpapers.com/images/featured-full/4k-ultra-hd-gaming-ylyipyznm00tq5og.jpg"
+      alt="Test image"
+    />
+  </div>
+  }
+  @if (!isVisible ) {
+    <button (click)="chargeImage()">Charge</button>
+  }
+</section>
