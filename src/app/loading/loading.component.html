@@ -1,0 +1,13 @@
+@defer () {
+<div>
+  <img
+    src="https://c4.wallpaperflare.com/wallpaper/611/838/413/spiderman-hd-4k-superheroes-wallpaper-preview.jpg"
+    alt="Differ image"
+  />
+</div>
+} @loading(minimum 2s; after 200ms) {
+<p>Loading...</p>
+} @placeholder {
+<!-- This helps with the content layout shift -->
+<p>While there's no content...</p>
+}
