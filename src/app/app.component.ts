@@ -6,11 +6,12 @@ import { PlaceholderComponent } from './placeholder/placeholder.component';
 import { LoadingComponent } from './loading/loading.component';
 import { SwitchComponent } from "./switch/switch.component";
 import { AdvancedDeferComponent } from './advanced-defer/advanced-defer.component';
+import { ErrorComponent } from './error/error.component';
 
 @Component({
   selector: 'app-root',
   imports: [IfComponent, ForComponent,
-    DeferComponent, PlaceholderComponent, LoadingComponent, SwitchComponent,AdvancedDeferComponent],
+    DeferComponent, PlaceholderComponent, LoadingComponent, SwitchComponent,AdvancedDeferComponent,ErrorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

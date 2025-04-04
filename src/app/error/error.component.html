@@ -1,0 +1,17 @@
+@defer (when isContentReady) {
+<p>Component</p>
+}@loading(after 100ms; minimum 1s) {
+<p>Loading...</p>
+}@placeholder {
+<p>Setting up the content</p>
+}@error {
+<p>Sorry, we couldn't load the component. Try again later.</p>
+}
+
+@defer (when isContentReadyError) {
+<app-error-child></app-error-child>
+}@error {
+<p>Sorry, we couldn't load the component. Try again later.</p>
+}
+
+<button (click)="work()">Click</button>
