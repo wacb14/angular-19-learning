@@ -15,11 +15,9 @@ export class CharacterService {
   private http = inject(HttpClient);
 
   getCharacters(): Observable<Character[]> {
-    return this.http.get<Character[]>(this.apiUrl).pipe(
-      map((characters) => {
-        characterAdapter(characters);
-      })
-    );
+    return this.http
+      .get<Character[]>(this.apiUrl)
+      .pipe(map((characters) => characterAdapter(characters)));
   }
   updateCharacter(character: Character): Observable<Character> {
     return this.http.put<Character>(this.apiUrl, character);

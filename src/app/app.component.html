@@ -1,2 +1,12 @@
-@let localCharacters = characters();
+@let localCharacters = characters(); @for (character of localCharacters; track
+character.id) {
+
+<h3>{{ character.name }}</h3>
+<ul>
+  <li>{{ character.id }}</li>
+  <li>{{ character.lastName }}</li>
+  <li>{{ character.age }}</li>
+  <button (click)="delete(character.id)">Delete</button>
+</ul>
+}
 <router-outlet></router-outlet>
