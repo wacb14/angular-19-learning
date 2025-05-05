@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import {
   FormArray,
   FormControl,
@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { FormChildComponent } from '../form-child/form-child.component';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 export interface ItemForm {
   id: FormControl<number>;
@@ -29,33 +30,27 @@ export class FormParentComponent {
     items: this.fb.array<CustomFormGroup>([]),
   });
 
-  items = signal(this.form.controls.items.controls);
+  get items() {
+    return this.form.controls.items;
+  }
+
+  itemChanges = toSignal(this.form.valueChanges);
 
   totalValue = computed(() => {
-    const value = this.items().reduce(
-      (total, formGroup) => total + Number(formGroup.controls.value.value),
+    const value = this.itemChanges()?.items?.reduce(
+      (total, item) => total + (Number(item?.value) || 0),
       0
     );
-    console.log('Computing total value: ', value);
     return value;
   });
 
-  constructor() {
-    effect(() => {
-      this.form.controls.items.valueChanges.subscribe(() => {
-        this.items.set([...this.form.controls.items.controls]);
-      });
-    });
-  }
-
   addItem() {
-    const id = this.items().length + 1;
+    const id = this.items.length + 1;
     const itemForm = this.fb.group<ItemForm>({
       id: this.fb.control(id),
       name: this.fb.control('', { validators: [Validators.required] }),
       value: this.fb.control(0, { validators: [Validators.required] }),
     });
     this.form.controls.items.push(itemForm);
-    this.items.set([...this.form.controls.items.controls]);
   }
 }

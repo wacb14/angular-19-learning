@@ -21,17 +21,7 @@ import {
 })
 export class CustomInputComponent implements ControlValueAccessor {
   control = input.required<FormControl<any>>();
-  constructor() {
-    effect(() => {
-      const currentSignalValue = this.control().value;
-      if (this.control().dirty || this.control().touched) {
-        const newValue = this.control().value;
-        if (currentSignalValue !== newValue) {
-          this.onChange(newValue);
-        }
-      }
-    });
-  }
+
   onTouched(): void {}
   onChange(_value: any): void {}
   writeValue(value: any): void {
